@@ -1,58 +1,51 @@
+
+
+
+<!--
+ v-bind 속성은 디렉티브라고 부르며
+ 디렉티브는 Vue에서 제공하는 특수 송석을 나타내는 v- 접두어가 붙어있다.
+ 렌더링 된 DOM에 특수한 반응형 동작을 하게 한다 .
+
+-->
+
+
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div id="app2">
+    <div v-if="liked">좋아연!</div>
+    <button  v-on:click="onclick" v-bind:title="message">
+        헬로우월드!
+    </button>
+    <div class="user-div" v-for="user in users" v-bind:key="user.idx">
+        {{ user }}
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+  name:"HelloWorld",
+  data(){
+    return {
+      liked : false ,
+      message : "마우스를 올렸다아~~" ,
+      users : [
+        {idx:1, name:`최윤진` , age:27},
+        {idx:2, name:`장동건` , age:45},
+        {idx:3, name:`원빈` , age:40},
+        {idx:4, name:`하정우` , age:36},
+      ]
+    }
+  },
+
+  methods : {
+    onclick(){
+      alert(1);
+      this.liked = true;
+    }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style>
+    @import "../assets/stylesheets/HelloWorld.css";
 </style>
+
