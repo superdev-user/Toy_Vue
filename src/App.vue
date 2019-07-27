@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./image/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ReverseWord msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ReverseWord from './components/ReverseWord.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    ReverseWord
   }
 }
 </script>
