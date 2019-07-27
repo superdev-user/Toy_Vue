@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./image/logo.png">
-    <ReverseWord msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/logo.png">
+    <ReverseWord />
+    <router-view/>
   </div>
 </template>
 

@@ -1,0 +1,31 @@
+<section class="join">
+  <article class="container">
+    <div class="page-header">
+      <h1>회원가입</h1>
+    </div>
+    <div class="page-content">
+      <form role="form" @submit.prevent="onSubmit">
+        <div class="form-group">
+          <label for="id">아이디</label>
+          <input id="id" name="user_id" type="text" class="form-control" v-model="user_id">
+          <p class="error-block" v-if="error[0]">아이디는 띄어쓰기와 특수문자를 입력할수없습니다.</p>
+        </div>
+        <div class="form-group">
+          <label for="InputPassword1">비밀번호</label>
+          <input type="password" class="form-control" id="InputPassword1" placeholder="비밀번호" v-model="user_pw1">
+          <p class="error-block" v-show="error[1]">비밀번호는 8자리 이상 문자, 숫자, 특수문자로 구성하여야 합니다.</p>
+        </div>
+        <div class="form-group">
+          <label for="InputPassword2">비밀번호 확인</label>
+          <input type="password" class="form-control" id="InputPassword2" placeholder="비밀번호 확인" v-model="user_pw2">
+          <p class="error-block" v-if="error[2]">비밀번호가 일치하지않습니다.</p>
+          <p class="help-block">비밀번호 확인을 위해 다시한번 입력 해 주세요</p>
+        </div>
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-info">회원가입<i class="fa fa-check spaceLeft"></i></button>
+          <router-link :to="{ name: 'main'}" class="btn btn-info">가입취소</router-link>
+        </div>
+      </form>
+    </div>
+  </article>
+</section>
