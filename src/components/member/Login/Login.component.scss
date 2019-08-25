@@ -7,7 +7,7 @@
 
 .login-container{
   width:50%;
-  height:100%;
+  height:99%;
   margin-left: auto;
   margin-right:auto;
 }
@@ -43,7 +43,7 @@ input{border:none;border:solid 1px #ccc;}
 button{border:none;border:solid 1px #ccc;}
 
 input[type=text] , input[type=password] {
-  width: 100%;
+  width: 97%;
   height:30px;
   font-size: 12pt;
   border-radius: 5px;
@@ -56,19 +56,18 @@ input[type=text] , input[type=password] {
 }
 
 .btn-form button {
-  width: 50px;
+  width: 100%;
   height: 30px;
+  cursor: pointer;
   border-radius: 5px;
 }
 
 .btn-form button.submit {
+  transition : background-color .5s , color .5s;
   border: 1px solid #1976D2;
 }
 
-.btn-form button.cancel{
-  border: 1px solid #FF4081;
-}
-
-.btn-form button.submit , .btn-form button.cancel {
-  margin-left: 10px;
+.btn-form button.submit:hover {
+  color:#ffffff;
+  background-color: #1976D2;
 }

@@ -1,11 +1,11 @@
-.login {
+.join {
   width:95%;
   height:100%;
   float:right;
   position: relative;
 }
 
-.login-container{
+.join-container{
   width:50%;
   height:100%;
   margin-left: auto;
@@ -13,7 +13,7 @@
 }
 
 
-.login-container #login-form {
+.join-container #join-form {
   position: relative;
   top:50%;
   transform:translateY(-50%);
@@ -27,19 +27,19 @@
   height: 75%;
 }
 
-.login-container #login-form .inner-container {
+.join-container #join-form .inner-container {
   position: relative;
   top: 50%;
   transform:translateY(-50%);
   margin: 0 auto;
 }
 
-#login-form .inner-container div {
+#join-form .inner-container div {
   margin: 0 0 15px 0;
 }
 
-#login-form .inner-container  div  p {margin:5px 0;}
-#login-form .inner-container  div  p  label {
+#join-form .inner-container  div  p {margin:5px 0;}
+#join-form .inner-container  div  p  label {
   font-size: 12pt;
   font-weight: bold;
 }
@@ -69,7 +69,7 @@ span.fail {
 }
 
 
-#login-form .inner-container .btn-form {
+#join-form .inner-container .btn-form {
   margin : 10px 0;
   text-align: center;
 }
@@ -80,7 +80,7 @@ span.fail {
   border-radius: 5px;
   font-size: 10pt;
   cursor: pointer;
-  transition: background-color .5s;
+  transition : background-color .5s , color .5s;
 }
 
 .btn-form button.submit {

@@ -1,12 +1,34 @@
 .snb {
   width: 5%;
   height: 100%;
-  position: relative;
+  position: fixed;
   float: left;
   background-color: #1E4592;
 }
+.snb #top {
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
 
-.snb ul li a{
-  color: #ffffff;
-  text-decoration: none;
+}
+.snb #bottom {
+  position: absolute;
+  bottom:0;
+  right:0;
+  left:0;
+}
+.menu-item {
+  width: 100%;
+  height:50px;
+  text-align: center;
+  position: relative;
+}
+.snb div img{
+  position: relative;
+  top: 50%;
+  transform:translateY(-50%);
+  width:30%;
+  height:auto;
+
 }

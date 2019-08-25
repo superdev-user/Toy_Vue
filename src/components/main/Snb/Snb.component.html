@@ -1,6 +1,18 @@
 <div class="snb">
-    <ul>
-        <li><router-link :to="{ name: 'login'}">로그인</router-link></li>
-        <li><router-link :to="{ name: 'join'}">회원가입</router-link></li>
-    </ul>
+    <div id="top">
+        <router-link :to="{ name: 'join'}">
+            <div class="menu-item">
+                <img src="../../../assets/images/login.png"/>
+            </div>
+        </router-link>
+    </div>
+    <div id="bottom">
+        <router-link :to="{ name: 'login'}">
+            <div class="menu-item">
+                <img src="../../../assets/images/login.png"/>
+            </div>
+        </router-link>
+    </div>
+
+
 </div>

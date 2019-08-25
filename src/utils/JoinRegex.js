@@ -1,10 +1,5 @@
 import Validator from './Validator'
 
-const joinRegex = {
-  idReg : /^[a-zA-Z][a-zA-Z0-9\_]{5,11}$/g,
-  password : /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+=-]).{8,16}$/,
-}
-
 class JoinRegex {
 
   /**
@@ -15,7 +10,10 @@ class JoinRegex {
    * @return {Boolean} 검증 관련 true or false
    * */
   static isValidId(value){
-    let idReg = joinRegex.idReg
+    let idReg = /^[a-zA-Z][a-zA-Z0-9\_]{5,11}$/g;
+    // console.log(value)
+    // console.log(idReg)
+    // console.log(Validator.isValid(idReg , value))
     return Validator.isValid(idReg , value)
   }
 
@@ -28,7 +26,7 @@ class JoinRegex {
    * */
   static isValidPassword(value){
 
-    let passwordReg = joinRegex.password
+    let passwordReg = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+=-]).{8,16}$/;
     return Validator.isValid(passwordReg , value)
   }
 
