@@ -1,29 +1,37 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <ReverseWord />
-    <router-view/>
-  </div>
+    <div id="app">
+        <snb-component></snb-component>
+        <router-view/>
+    </div>
 </template>
 
 <script>
-import ReverseWord from './components/ReverseWord.vue'
 
-export default {
-  name: 'app',
-  components: {
-    ReverseWord
+  import Snb from './components/main/Snb/snb'
+
+  export default {
+    name: 'app',
+    components: {
+      'snb-component': Snb,
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html, body {
+        height: 100%;
+    }
+
+    #app {
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        height: 100%;
+    }
+
 </style>

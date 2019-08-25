@@ -1,31 +1,37 @@
-<section class="join">
-  <article class="container">
-    <div class="page-header">
-      <h1>회원가입</h1>
+<div class="login">
+    <div class="login-container">
+        <form @submit="onSubmit" id="login-form" action="post">
+            <div class="inner-container">
+                <div>
+                    <p><label>아이디</label></p>
+                    <input :class="{success : msgOption[0] == 0}"  id="userId" type="text" @blur="() => {onBlur(0)}" v-model="userId" placeholder="영문자로 시작하는 6 ~ 12자리 아이디" autocomplete="off"/>
+                    <span class='fail' v-if="msgOption[0] == 1">{{JoinMsg.REQUIREED}}</span>
+                    <span class='fail' v-if="msgOption[0] == 2">{{JoinMsg.ID_MSG}}</span>
+                </div>
+                <div>
+                    <p><label>비밀번호</label></p>
+                    <input :class="{success : msgOption[1] == 0}" id="userPw" type="password"  @blur="() => {onBlur(1)}" v-model="userPw"  autocomplete="off" placeholder="대소문자, 숫자, 특수문자 가 포함되는 8 ~ 16 자리 비밀번호"/>
+                    <span class='fail' v-if="msgOption[1] == 1">{{JoinMsg.REQUIREED}}</span>
+                    <span class='fail' v-if="msgOption[1] == 2">{{JoinMsg.PASS_MSG}}</span>
+                </div>
+
+                <div>
+                    <p><label>비밀번호 확인</label></p>
+                    <input :class="{success : msgOption[2] == 0}" id="userPwConfirm" type="password"  @blur="() => {onBlur(2)}" v-model="userPwConfirm" autocomplete="off" />
+                    <span class='fail' v-if="msgOption[2] == 1">{{JoinMsg.REQUIREED}}</span>
+                    <span class='fail' v-if="msgOption[2] == 2">{{JoinMsg.PASS_NOT_CONFIRM}}</span>
+                </div>
+                <div>
+                    <p><label>이름</label></p>
+                    <input :class="{success : msgOption[3] == 0}" id="userNm" type="text" v-model="userNm"  @blur="() => {onBlur(3)}" autocomplete="off"/>
+                    <span class='fail'v-if="msgOption[3] == 1">{{JoinMsg.REQUIREED}}</span>
+                </div>
+
+                <div class="btn-form">
+                    <button class="submit" >가입</button>
+                    <button class="cancel" >취소</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="page-content">
-      <form role="form" @submit.prevent="onSubmit">
-        <div class="form-group">
-          <label for="id">아이디</label>
-          <input id="id" name="user_id" type="text" class="form-control" v-model="user_id">
-          <p class="error-block" v-if="error[0]">아이디는 띄어쓰기와 특수문자를 입력할수없습니다.</p>
-        </div>
-        <div class="form-group">
-          <label for="InputPassword1">비밀번호</label>
-          <input type="password" class="form-control" id="InputPassword1" placeholder="비밀번호" v-model="user_pw1">
-          <p class="error-block" v-show="error[1]">비밀번호는 8자리 이상 문자, 숫자, 특수문자로 구성하여야 합니다.</p>
-        </div>
-        <div class="form-group">
-          <label for="InputPassword2">비밀번호 확인</label>
-          <input type="password" class="form-control" id="InputPassword2" placeholder="비밀번호 확인" v-model="user_pw2">
-          <p class="error-block" v-if="error[2]">비밀번호가 일치하지않습니다.</p>
-          <p class="help-block">비밀번호 확인을 위해 다시한번 입력 해 주세요</p>
-        </div>
-        <div class="form-group text-center">
-          <button type="submit" class="btn btn-info">회원가입<i class="fa fa-check spaceLeft"></i></button>
-          <router-link :to="{ name: 'main'}" class="btn btn-info">가입취소</router-link>
-        </div>
-      </form>
-    </div>
-  </article>
-</section>
+</div>

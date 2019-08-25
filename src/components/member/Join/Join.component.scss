@@ -1,3 +1,108 @@
-.join {
-  .error-block{margin-top:5px;color:#f00;}
+.login {
+  width:95%;
+  height:100%;
+  float:right;
+  position: relative;
 }
+
+.login-container{
+  width:50%;
+  height:100%;
+  margin-left: auto;
+  margin-right:auto;
+}
+
+
+.login-container #login-form {
+  position: relative;
+  top:50%;
+  transform:translateY(-50%);
+  border:1px solid #e0e0e0;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  margin : 0 auto;
+  width: 75%;
+  height: 75%;
+}
+
+.login-container #login-form .inner-container {
+  position: relative;
+  top: 50%;
+  transform:translateY(-50%);
+  margin: 0 auto;
+}
+
+#login-form .inner-container div {
+  margin: 0 0 15px 0;
+}
+
+#login-form .inner-container  div  p {margin:5px 0;}
+#login-form .inner-container  div  p  label {
+  font-size: 12pt;
+  font-weight: bold;
+}
+
+input{border:none;border:solid 1px #ccc;}
+input:focus {outline:none; border:1px solid #1976D2;}
+button{border:none;border:solid 1px #ccc;}
+
+input[type=text] , input[type=password] {
+  width: 98%;
+  height:30px;
+  padding-left: 10px;
+  font-size: 12pt;
+  border-radius: 5px;
+
+}
+
+input.success {
+  border-radius: 5px;
+  border : 1px solid green;
+}
+
+span.fail {
+  display: inline-block;
+  margin: 5px;
+  color: #FF4081;
+}
+
+
+#login-form .inner-container .btn-form {
+  margin : 10px 0;
+  text-align: center;
+}
+
+.btn-form button {
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 10pt;
+  cursor: pointer;
+  transition: background-color .5s;
+}
+
+.btn-form button.submit {
+  border: 1px solid #1976D2;
+}
+
+.btn-form button.submit:hover {
+  color:#ffffff;
+  background-color: #1976D2;
+}
+
+.btn-form button.cancel{
+  border: 1px solid #FF4081;
+}
+
+.btn-form button.cancel:hover{
+  color:#ffffff;
+  background-color: #FF4081;
+}
+
+.btn-form button.submit , .btn-form button.cancel {
+  margin-left: 10px;
+}
+
+
