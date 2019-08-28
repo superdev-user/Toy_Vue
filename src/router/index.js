@@ -10,12 +10,21 @@ const routerExcute = (router) => {
   }
 }
 
-routerExcute(mains)
-routerExcute(members)
+routerExcute(mains);
+routerExcute(members);
 
-Vue.use(Router)
+Vue.use(Router);
+
+// const authCheck = () => (from , to , next) => {
+//   console.log(123123123123123);
+//   const isAuthCheck = false;
+//   if(isAuthCheck){
+//     return next()
+//   }
+//   next('/login?returnPath=test')
+// }
 
 export default new Router({
   mode: 'history',
-  routes: routers
+  routes: routers,
 })

@@ -9,6 +9,7 @@
 
   import Snb from './components/main/Snb/snb'
 
+
   export default {
     name: 'app',
     components: {
