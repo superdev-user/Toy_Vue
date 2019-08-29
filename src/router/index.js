@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import mains from './main'
 import members from './member'
+import studySpace from './studySpace'
 
 const routers = []
 const routerExcute = (router) => {
@@ -12,17 +13,9 @@ const routerExcute = (router) => {
 
 routerExcute(mains);
 routerExcute(members);
+routerExcute(studySpace);
 
 Vue.use(Router);
-
-// const authCheck = () => (from , to , next) => {
-//   console.log(123123123123123);
-//   const isAuthCheck = false;
-//   if(isAuthCheck){
-//     return next()
-//   }
-//   next('/login?returnPath=test')
-// }
 
 export default new Router({
   mode: 'history',

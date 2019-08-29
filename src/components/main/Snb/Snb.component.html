@@ -1,23 +1,34 @@
 <div class="snb">
     <div id="top">
-        <router-link :to="{ name: 'join'}">
+        <router-link :to="{ name: 'addStudySpace'}">
             <div class="menu-item">
-                <img src="../../../assets/images/signup.png"/>
+                <img src="@/assets/images/board_plus.png"/>
             </div>
         </router-link>
 
-        <router-link :to="{ name: 'join'}">
-            <div class="menu-item">
-                <img src="../../../assets/images/board.png"/>
-            </div>
-        </router-link>
     </div>
     <div id="bottom">
-        <router-link :to="{ name: 'login'}">
-            <div class="menu-item">
-                <img src="../../../assets/images/login.png"/>
+        <!-- Login상태가 아닐때 Login 처리 위한 component  -->
+        <div v-if="!isLogin">
+            <router-link :to="{ name: 'join'}">
+                <div class="menu-item">
+                    <img src="@/assets/images/signup.png"/>
+                </div>
+            </router-link>
+            <router-link :to="{ name: 'login'}"  >
+                <div class="menu-item">
+                    <img src="@/assets/images/login.png"/>
+                </div>
+            </router-link>
+        </div>
+
+        <!-- Login상태시 Logout처리를 위한 component  -->
+        <div v-else>
+            <div class="menu-item" @click="onLogoutEvent">
+                <img src="@/assets/images/logout.png"/>
             </div>
-        </router-link>
+
+        </div>
     </div>
 
 

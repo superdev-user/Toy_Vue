@@ -23,12 +23,13 @@
   height:50px;
   text-align: center;
   position: relative;
+  cursor: pointer;
 }
 .snb div img{
   position: relative;
   top: 50%;
   transform:translateY(-50%);
-  width:40%;
+  width:32px;
   height:auto;
 
 }

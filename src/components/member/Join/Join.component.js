@@ -1,6 +1,6 @@
-import JoinMsg from '../../../utils/JoinMsg'
-import JoinRegex from '../../../utils/JoinRegex'
-import Validator from '../../../utils/Validator';
+import JoinMsg from '@/utils/JoinMsg'
+import JoinRegex from '@/utils/JoinRegex'
+import Validator from '@/utils/Validator';
 import axios from 'axios';
 
 const STATE_CODE = {
@@ -45,21 +45,14 @@ export default {
       let flag = this.msgOption.filter(v => v == 0).length == 4;
 
       if (flag) {
-
         const {userId, userPw: userPwd, userNm} = this;
-        //todo backend 전송 .
-        axios.post(`http://localhost:9000/user/signup`, {
-          headers: {
-            'Content-type': 'application/json',
-          },
-          userId, userNm, userPwd
-        }).then(result => {
-          if (result.status == 200) {
-            alert("회원가입이 되었습니다.")
-            this.$router.push('/member/login')
-          } else {
-            alert("실패.")
-          }
+        this.$store.dispatch("JOIN" , {userId , userPwd , userNm}).then(({status})=> {
+          if (status == 200) {
+                alert("회원가입이 되었습니다.")
+                this.$router.push('/member/login')
+              } else {
+                alert("실패.")
+              }
         }).catch(err => {
           console.log(err)
         })

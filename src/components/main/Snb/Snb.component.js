@@ -1,3 +1,4 @@
+import {mapState} from 'vuex'
 export default {
   name: 'snb',
   components: {},
@@ -10,13 +11,16 @@ export default {
   beforeCreate: function () {
       // console.log(this.$session.has('jwt'));
   },
-  computed: {
 
+  computed: {
+    ...mapState(['userAccessToken' , 'isLogin'])
   },
   mounted () {
 
   },
   methods: {
-
+    onLogoutEvent() {
+      this.$store.dispatch('LOGOUT').then(() => {this.$router.push('/')})
+    }
   }
 }
