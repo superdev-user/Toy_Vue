@@ -8,10 +8,25 @@
   text-align: center;
 }
 
+#contents-div{
+  width:70%;
+  position: relative;
+  margin:0 auto;
+}
+#main-image .text{
+  position: absolute;
+  left:10%;
+  top:30%;
+  font-size: 2.5rem;
+  color: #ffffff;
+}
+#main-image .text > p {
+  font-weight: bold;
+}
 #main-image img{
   margin: 10px;
   position: relative;
-  width: 80%;
+  width: 97%;
   box-shadow: 1px 1px 1px 1px grey;
 }
 
