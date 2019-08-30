@@ -8,7 +8,6 @@
 <script>
   import Snb from '@/components/main/Snb/snb'
 
-
   export default {
     name: 'app',
     components: {
@@ -35,6 +34,15 @@
     html, body {
         height: 100%;
     }
+
+    input{border:none;border:solid 1px #ccc;}
+    textarea{border:none;border:solid 1px #ccc;}
+    button{border:none;border:solid 1px #ccc;}
+
+    input:focus , textarea:focus, button:focus{
+        outline: none;
+    }
+
 
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;

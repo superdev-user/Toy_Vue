@@ -1,32 +1,128 @@
-.studySpace {
+.study-space {
   position: relative;
 }
 
-#main-image {
+.study-space-main {
   position: relative;
   width:100%;
+  height: 100%;
   text-align: center;
 }
+.study-space-contents-img{
+  height:33% !important;
+  overflow: hidden;
+}
 
-#contents-div{
+.study-space-contents-img ,.study-space-contents{
+  height:64%;
   width:70%;
   position: relative;
   margin:0 auto;
 }
-#main-image .text{
+
+.study-space-form{
+  width: 97%;
+  height: 100%;
+  margin : 0 auto;
+}
+
+.study-space-form span {font-weight: bold;}
+.study-space-form .study-space-input{
+  width: 100%;
+  line-height: 30px;
+  font-size: 11pt;
+  padding-left: 10px;
+  border-radius: 7px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;
+}
+
+.study-space-form .study-space-input-wrap{
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin:5px 0;
+}
+
+.study-space-form .study-space-input-wrap .study-space-textarea{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  overflow: auto;
+  resize: none;
+  border-radius: 10px;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;
+  font-size: 10pt;
+}
+
+.study-space-main .text{
   position: absolute;
   left:10%;
   top:30%;
   font-size: 2.5rem;
   color: #ffffff;
 }
-#main-image .text > p {
+
+.study-space-main .text > p {
   font-weight: bold;
 }
-#main-image img{
+.study-space-main img{
   margin: 10px;
   position: relative;
   width: 97%;
   box-shadow: 1px 1px 1px 1px grey;
 }
+
+.percent-8 {
+  height: 8%;
+}
+.percent-78 {
+  height: 78%;
+}
+.percent-14{
+  height: 14%;
+}
+
+.study-space-button-group{
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+
+.study-space-form button {
+  width: 70px;
+  height: 30px;
+  border-radius: 5px;
+  font-size: 10pt;
+  cursor: pointer;
+  margin:5px;
+  transition : background-color .5s , color .5s;
+}
+
+button.success {
+  border: 1px solid #1976D2;
+}
+button.success:hover {
+  color:#ffffff;
+  background-color: #1976D2;
+}
+
+
+button.cancel{
+  border: 1px solid #FF4081;
+}
+
+button.cancel:hover{
+  color:#ffffff;
+  background-color: #FF4081;
+}
+
+
+
 

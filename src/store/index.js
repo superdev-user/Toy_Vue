@@ -10,7 +10,7 @@ const addTokenToAxiosHeader = () => {
 
   if(!userAccessToken) return;
   // axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
-  return {Authorization : `Bearer ${userAccessToken}`}
+  return `Bearer ${JSON.parse(userAccessToken).token}`;
 }
 
 
@@ -33,7 +33,7 @@ export default new Vuex.Store({
 
     LOGOUT(state) {
       state.userAccessToken = undefined;
-      state.isLogin = !!undefined
+      state.isLogin = !!undefined;
       localStorage.userAccessToken;
     }
   },
@@ -55,6 +55,26 @@ export default new Vuex.Store({
         },
         userId, userNm, userPwd
       });
+      return result;
+    },
+
+    async ADD_STUDY_SPACE ({commit} , {title , description , masterId}){
+        let tokenHeader = addTokenToAxiosHeader();
+        let result = await axios.post(`${host}/studySpace`,{ title , description ,masterId} ,  {
+          headers : {
+            'Content-type' : 'application/json',
+            'Authorization' : tokenHeader
+          }});
+      return result;
+    },
+
+    async LIST_STUDY_SPACE ({commit} ){
+      let tokenHeader = addTokenToAxiosHeader();
+      let result = await axios.get(`${host}/studySpace`,  {
+        headers : {
+          'Content-type' : 'application/json',
+          'Authorization' : tokenHeader
+        }});
       return result;
     }
   }

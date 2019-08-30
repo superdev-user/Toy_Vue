@@ -1,10 +1,25 @@
-<div class="studySpace">
-    <div id="main-image">
-        <div id="contents-div">
+<div class=".study-space">
+    <div class="study-space-main">
+        <div class="study-space-contents-img">
             <img src="@/assets/images/study-main.png">
             <div class="text" >
-                <p>스터디룸 예약</p>
+                <p>스터디 추가</p>
             </div>
+        </div>
+        <div class="study-space-contents">
+            <form class="study-space-form" @submit.prevent="onSubmit">
+                <div class="study-space-input-wrap percent-8">
+                    <input class="study-space-input" v-model="title" type="text" placeholder="스터디 주제를 입력하세요."/>
+                </div>
+                <div class="study-space-input-wrap percent-78">
+                    <textarea class="study-space-textarea" v-model="description" type="text" placeholder="스터디 소개."/>
+                </div>
+
+                <div class="study-space-input-wrap study-space-button-group percent-14">
+                    <button class="success">저장</button>
+                    <button @click="reset" class="cancel">다시쓰기</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

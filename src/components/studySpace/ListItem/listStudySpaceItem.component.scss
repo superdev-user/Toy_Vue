@@ -1,0 +1,45 @@
+.listStudySpace {
+  position: relative;
+  width: 20%;
+  height:200px;
+  float: left;
+  margin: 10px;
+  padding:10px;
+  border : 1px solid black;
+  border-radius: 8px;
+}
+
+.list-item-img{
+  height: 70%;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.list-item-img img{
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.list-item {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.list-item .hidden {
+  display: block;
+  overflow:hidden;
+  width:94%;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+}
+
+.list-item .list-title{
+  font-weight: bold;
+}
+
+.list-item .list-description{
+  text-indent: 1em;
+}

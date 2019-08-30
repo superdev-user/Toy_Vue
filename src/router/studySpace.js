@@ -1,11 +1,17 @@
-import StudySpace from '@/components/studySpace/Add'
-
+import AddStudySpace from '@/components/studySpace/Add';
+import ListStudySpace from '@/components/studySpace/List';
 
 export default [
   {
     path: '/studySpace',
     name: 'addStudySpace',
-    component: StudySpace,
+    component: AddStudySpace,
+  },
+
+  {
+    path: '/studySpaceList',
+    name: 'listStudySpace',
+    component: ListStudySpace,
   },
 
 ]

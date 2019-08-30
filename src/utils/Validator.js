@@ -21,7 +21,4 @@ class Validator{
     return typeof value === 'undefined';
   }
 }
-
-
-
 export default Validator

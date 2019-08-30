@@ -1,0 +1,14 @@
+<div @click="detail" class="listStudySpace">
+    <div class="list-item-img">
+        <img src="@/assets/images/developer.jpeg" alt="">
+    </div>
+    <div class="list-item">
+        <input type="hidden" v-model="data.studyRoomId"/>
+        <p class="list-title hidden"> {{data.title}}</p>
+        <p class="list-description hidden"> {{data.description}}</p>
+        <p class="list-master hidden">스터디장 {{data.masterId}}</p>
+    </div>
+
+    <!-- studyRoomId , title , description , title , masterId , attendants , operaators , requests-->
+</div>
+
