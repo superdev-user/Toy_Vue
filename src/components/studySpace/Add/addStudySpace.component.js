@@ -28,7 +28,10 @@ export default {
           title : this.title , description : this.description , masterId : writer
         }).then(({data:{code} })=> {
 
-          if (code === 20000) alert("스터디가 등록되었습니다.");
+          if (code === 20000){
+            alert("스터디가 등록되었습니다.")
+            this.$router.push('/studySpaceList');
+          };
 
         }).catch(err => {
           console.log(err)
