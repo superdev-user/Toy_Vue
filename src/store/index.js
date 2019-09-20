@@ -7,12 +7,9 @@ Vue.use(Vuex);
 const host = `http://localhost:9000`;
 const addTokenToAxiosHeader = () => {
   const {userAccessToken} = localStorage;
-
   if(!userAccessToken) return;
-  // axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
   return `${JSON.parse(userAccessToken).token}`;
 }
-
 
 export default new Vuex.Store({
   state: {
@@ -25,22 +22,24 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    LOGIN(state , {data:token}){
+    LOGIN(state , {data:token}, userId){
       state.userAccessToken = token;
       state.isLogin = !!token;
       localStorage.setItem("userAccessToken" , JSON.stringify(token));
+      localStorage.setItem("userId", 'crowhans2');
     },
 
     LOGOUT(state) {
       state.userAccessToken = undefined;
       state.isLogin = !!undefined;
-      localStorage.removeItem("userAccessToken"); // token remove
+      localStorage.removeItem("userAccessToken");
+      localStorage.removeItem("userId");
     }
   },
   actions: {
-    async LOGIN ({commit}, {userId, userPw : userPwd}) {
+    async LOGIN ({commit}, {userId : userId, userPw : userPwd}) {
       let result = await axios.post(`${host}/user/signin`, {userId, userPwd });
-      commit('LOGIN' , result);
+      commit('LOGIN', result, userId);
       return result
     },
 
@@ -90,7 +89,7 @@ export default new Vuex.Store({
 
     async REQUEST_STUDY_SPACE ({commit}  , {studySpaceId} ){
       let tokenHeader = addTokenToAxiosHeader();
-      let result = await axios.put(`${host}/participation/`+studySpaceId,  {
+      let result = await axios.put(`${host}/studySpace/participation/`+studySpaceId,  {
         headers : {
           'Content-type' : 'application/json',
           'Authorization' : tokenHeader
@@ -100,7 +99,7 @@ export default new Vuex.Store({
 
     async REQUEST_CANCLE_STUDY_SPACE ({commit}  , {studySpaceId} ){
       let tokenHeader = addTokenToAxiosHeader();
-      let result = await axios.delete(`${host}/participation/`+studySpaceId,  {
+      let result = await axios.delete(`${host}/studySpace/participation/`+studySpaceId,  {
         headers : {
           'Content-type' : 'application/json',
           'Authorization' : tokenHeader

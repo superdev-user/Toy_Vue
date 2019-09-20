@@ -12,7 +12,8 @@ export default {
       title : '',
       description : '',
       masterId: '',
-      requests: ''
+      requests: '',
+      userId : localStorage.userId
     }
   },
   created(){
@@ -38,14 +39,14 @@ export default {
     studyRequest(e) {
       e.preventDefault()
 
+      console.log(this.$route.params.studyRoomId);
+
       this.$store.dispatch("REQUEST_STUDY_SPACE" , {
         studySpaceId: this.$route.params.studyRoomId
       }).then(({data:{code} })=> {
-
         if (code === 20000){
           alert("스터디 신청 되었습니다.")
         }
-
       }).catch(err => {
         console.log(err)
       })
@@ -57,7 +58,6 @@ export default {
       this.$store.dispatch("REQUEST_CANCLE_STUDY_SPACE" , {
         studySpaceId: this.$route.params.studyRoomId
       }).then(({data:{code} })=> {
-
         if (code === 20000){
           alert("스터디 신청 취소 되었습니다.")
           this.$router.push('/studySpaceList');

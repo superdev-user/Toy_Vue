@@ -9,21 +9,25 @@
         <div class="study-space-contents">
             <form class="study-space-form">
                 <div class="study-space-input-wrap percent-8">
-                    <input class="study-space-input" v-model="title" type="text"/>
+                    제목 <input class="study-space-input" v-model="title" type="text"/>
                 </div>
                 <div class="study-space-input-wrap percent-8">
-                    <input class="study-space-input" v-model="masterId" type="text"/>
+                    모임장 <input class="study-space-input" v-model="masterId" type="text"/>
+                </div>
+                <div class="study-space-input-wrap percent-78">
+                    소개 <textarea class="study-space-textarea" v-model="description" type="text"/>
                 </div>
 
                 <!-- 참석자 - 여기서 OK, APROVAL, CANCLE ? 걸러야함 -->
                 <div class="study-space-input-wrap percent-8" v-for="request in requests">
                     <input class="study-space-input" v-model="request.user.userId" type="text"/>
                 </div>
-                <div class="study-space-input-wrap percent-78">
-                    <textarea class="study-space-textarea" v-model="description" type="text"/>
-                </div>
-                <button @click="studyRequest" class="success">가입요청</button>
-                <button @click="studyRequestCancel" class="success">가입취소</button>
+{{masterId}}  {{userId}}
+                <template v-if="masterId != userId">
+                    <button @click="studyRequest" class="success">가입요청</button>
+                    <button @click="studyRequestCancel" class="success">가입취소</button>
+                </template>
+
             </form>
         </div>
     </div>
