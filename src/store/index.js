@@ -10,7 +10,7 @@ const addTokenToAxiosHeader = () => {
 
   if(!userAccessToken) return;
   // axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
-  return `Bearer ${JSON.parse(userAccessToken).token}`;
+  return `${JSON.parse(userAccessToken).token}`;
 }
 
 
@@ -34,7 +34,7 @@ export default new Vuex.Store({
     LOGOUT(state) {
       state.userAccessToken = undefined;
       state.isLogin = !!undefined;
-      localStorage.userAccessToken;
+      localStorage.removeItem("userAccessToken"); // token remove
     }
   },
   actions: {
@@ -76,6 +76,37 @@ export default new Vuex.Store({
           'Authorization' : tokenHeader
         }});
       return result;
+    },
+
+    async DETAIL_STUDY_SPACE ({commit}  , {studySpaceId} ){
+      let tokenHeader = addTokenToAxiosHeader();
+      let result = await axios.get(`${host}/studySpace/`+studySpaceId,  {
+        headers : {
+          'Content-type' : 'application/json',
+          'Authorization' : tokenHeader
+        }});
+      return result;
+    },
+
+    async REQUEST_STUDY_SPACE ({commit}  , {studySpaceId} ){
+      let tokenHeader = addTokenToAxiosHeader();
+      let result = await axios.put(`${host}/participation/`+studySpaceId,  {
+        headers : {
+          'Content-type' : 'application/json',
+          'Authorization' : tokenHeader
+        }});
+      return result;
+    },
+
+    async REQUEST_CANCLE_STUDY_SPACE ({commit}  , {studySpaceId} ){
+      let tokenHeader = addTokenToAxiosHeader();
+      let result = await axios.delete(`${host}/participation/`+studySpaceId,  {
+        headers : {
+          'Content-type' : 'application/json',
+          'Authorization' : tokenHeader
+        }});
+      return result;
     }
+
   }
 })

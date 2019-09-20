@@ -6,6 +6,10 @@ export default {
 
   data() {
 
+    if(!localStorage.userAccessToken){
+      this.$router.push('/');
+    }
+
     return {
       title : '',
       description : '',
@@ -16,7 +20,7 @@ export default {
     onSubmit(e) {
       e.preventDefault();
       let {userId: writer} = JSON.parse(localStorage.userAccessToken);
-      //
+
       let titleCheck = Validator.isSet(this.title);
       let descriptionCheck = Validator.isSet(this.description);
       let writerCheck = Validator.isSet(this.writer);
