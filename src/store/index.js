@@ -22,11 +22,11 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    LOGIN(state , {data:token}, userId){
+    LOGIN(state , {data:token} ){
       state.userAccessToken = token;
       state.isLogin = !!token;
       localStorage.setItem("userAccessToken" , JSON.stringify(token));
-      localStorage.setItem("userId", 'crowhans2');
+      localStorage.setItem("userId", token.userId);
     },
 
     LOGOUT(state) {
@@ -39,7 +39,7 @@ export default new Vuex.Store({
   actions: {
     async LOGIN ({commit}, {userId : userId, userPw : userPwd}) {
       let result = await axios.post(`${host}/user/signin`, {userId, userPwd });
-      commit('LOGIN', result, userId);
+      commit('LOGIN', result);
       return result
     },
 

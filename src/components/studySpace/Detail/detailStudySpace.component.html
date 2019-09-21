@@ -22,7 +22,7 @@
                 <div class="study-space-input-wrap percent-8" v-for="request in requests">
                     <input class="study-space-input" v-model="request.user.userId" type="text"/>
                 </div>
-{{masterId}}  {{userId}}
+
                 <template v-if="masterId != userId">
                     <button @click="studyRequest" class="success">가입요청</button>
                     <button @click="studyRequestCancel" class="success">가입취소</button>
