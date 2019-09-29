@@ -11,9 +11,9 @@ export default {
     return {
       title : '',
       description : '',
-      masterId: '',
-      requests: '',
-      userId : localStorage.userId
+      masterId : '',
+      requests : '',
+      loginUserId : localStorage.loginUserId
     }
   },
   created(){
@@ -39,13 +39,12 @@ export default {
     studyRequest(e) {
       e.preventDefault()
 
-      console.log(this.$route.params.studyRoomId);
-
       this.$store.dispatch("REQUEST_STUDY_SPACE" , {
         studySpaceId: this.$route.params.studyRoomId
-      }).then(({data:{code} })=> {
-        if (code === 20000){
-          alert("스터디 신청 되었습니다.")
+      }).then(({status})=> {
+        if (status == 200) {
+          alert("스터디 신청 되었습니다.");
+          this.getStudySpaceDetail();
         }
       }).catch(err => {
         console.log(err)
@@ -57,10 +56,45 @@ export default {
 
       this.$store.dispatch("REQUEST_CANCLE_STUDY_SPACE" , {
         studySpaceId: this.$route.params.studyRoomId
-      }).then(({data:{code} })=> {
-        if (code === 20000){
-          alert("스터디 신청 취소 되었습니다.")
-          this.$router.push('/studySpaceList');
+      }).then(({status})=> {
+        if (status == 200) {
+          alert("스터디 신청 취소 되었습니다.");
+          this.getStudySpaceDetail();
+        }
+
+      }).catch(err => {
+        console.log(err)
+      })
+
+    },
+    studyApprove(e, userId) {
+
+      e.preventDefault()
+
+      this.$store.dispatch("REQUEST_APPROVE_STUDY_SPACE" , {
+        studySpaceId: this.$route.params.studyRoomId,
+        attendantNm : userId
+      }).then(({status})=> {
+        if (status == 200) {
+          alert("스터디 가입승인 되었습니다.");
+          this.getStudySpaceDetail();
+        }
+
+      }).catch(err => {
+        console.log(err)
+      })
+
+    },
+    studyApproveCancel(e, userId) {
+      e.preventDefault()
+
+      this.$store.dispatch("REQUEST_APPROVE_CANCLE_STUDY_SPACE" , {
+        studySpaceId: this.$route.params.studyRoomId,
+        attendantNm : userId
+      }).then(({status})=> {
+        if (status == 200) {
+          alert("스터디 가입승인 취소 되었습니다.");
+          this.getStudySpaceDetail();
         }
 
       }).catch(err => {
@@ -68,5 +102,8 @@ export default {
       })
 
     }
+
+
+
   }
 }

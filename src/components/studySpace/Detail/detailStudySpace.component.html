@@ -18,15 +18,26 @@
                     소개 <textarea class="study-space-textarea" v-model="description" type="text"/>
                 </div>
 
-                <!-- 참석자 - 여기서 OK, APROVAL, CANCLE ? 걸러야함 -->
                 <div class="study-space-input-wrap percent-8" v-for="request in requests">
                     <input class="study-space-input" v-model="request.user.userId" type="text"/>
+                    <template v-if="masterId === loginUserId">
+                        <div v-if="request.approved === 'OK'">
+                            <button @click="studyApproveCancel($event, request.user.userId)" v-model="request.user.userId" class="success">가입거절</button>
+                        </div>
+                        <div v-if="request.approved !== 'OK'">
+                            <button @click="studyApprove($event, request.user.userId)" v-model="request.user.userId" class="success">가입승인</button>
+                        </div>
+                    </template>
+                    <template v-if="masterId !== loginUserId">
+                        <div v-if="request.approved == 'REQUEST'">
+                            <button @click="studyRequestCancel" class="success">가입취소</button>
+                        </div>
+                    </template>
                 </div>
 
-                <template v-if="masterId != userId">
+                <div v-if="masterId !== loginUserId">
                     <button @click="studyRequest" class="success">가입요청</button>
-                    <button @click="studyRequestCancel" class="success">가입취소</button>
-                </template>
+                </div>
 
             </form>
         </div>

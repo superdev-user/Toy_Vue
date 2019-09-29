@@ -26,14 +26,14 @@ export default new Vuex.Store({
       state.userAccessToken = token;
       state.isLogin = !!token;
       localStorage.setItem("userAccessToken" , JSON.stringify(token));
-      localStorage.setItem("userId", token.userId);
+      localStorage.setItem("loginUserId", token.userId);
     },
 
     LOGOUT(state) {
       state.userAccessToken = undefined;
       state.isLogin = !!undefined;
       localStorage.removeItem("userAccessToken");
-      localStorage.removeItem("userId");
+      localStorage.removeItem("loginUserId");
     }
   },
   actions: {
@@ -89,7 +89,7 @@ export default new Vuex.Store({
 
     async REQUEST_STUDY_SPACE ({commit}  , {studySpaceId} ){
       let tokenHeader = addTokenToAxiosHeader();
-      let result = await axios.put(`${host}/studySpace/participation/`+studySpaceId,  {
+      let result = await axios.put(`${host}/studySpace/participation/`+studySpaceId,  {},{
         headers : {
           'Content-type' : 'application/json',
           'Authorization' : tokenHeader
@@ -100,6 +100,27 @@ export default new Vuex.Store({
     async REQUEST_CANCLE_STUDY_SPACE ({commit}  , {studySpaceId} ){
       let tokenHeader = addTokenToAxiosHeader();
       let result = await axios.delete(`${host}/studySpace/participation/`+studySpaceId,  {
+        headers : {
+          'Content-type' : 'application/json',
+          'Authorization' : tokenHeader
+        }});
+      return result;
+    },
+
+    async REQUEST_APPROVE_STUDY_SPACE ({commit}  , {studySpaceId, attendantNm}  ){
+      console.log(attendantNm)
+      let tokenHeader = addTokenToAxiosHeader();
+      let result = await axios.put(`${host}/studySpace/approve/`+studySpaceId+'/'+attendantNm,  {},{
+        headers : {
+          'Content-type' : 'application/json',
+          'Authorization' : tokenHeader
+        }});
+      return result;
+    },
+
+    async REQUEST_APPROVE_CANCLE_STUDY_SPACE ({commit}  , {studySpaceId, attendantNm} ){
+      let tokenHeader = addTokenToAxiosHeader();
+      let result = await axios.delete(`${host}/studySpace/approve/`+studySpaceId+'/'+attendantNm,  {
         headers : {
           'Content-type' : 'application/json',
           'Authorization' : tokenHeader
