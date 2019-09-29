@@ -16,8 +16,8 @@ export default {
   },
   methods: {
     onLoginSubmit () {
-      console.log(`${this.userId}+ ${this.userPw}`);
-      this.$store.dispatch("LOGIN" , {userId : this.userId , userPw:this.userPw}).then(({data:{statusCode}}) => {
+      console.log(`${this.userId},  ${this.userPw}`);
+      this.$store.dispatch("LOGIN" , {userId:this.userId , userPw:this.userPw}).then(({data:{statusCode}}) => {
 
         if (statusCode === 200){
           this.$router.push('/');

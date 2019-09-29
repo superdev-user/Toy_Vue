@@ -14,7 +14,6 @@ export default {
   },
   created(){
     this.getStudySpaceList()
-
   },
   computed: {
 

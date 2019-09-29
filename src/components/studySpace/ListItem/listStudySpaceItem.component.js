@@ -5,8 +5,7 @@ export default {
   },
   props: ["data"],
   data () {
-    return {
-    }
+    return {};
   },
   created(){
 
@@ -19,8 +18,8 @@ export default {
   },
   methods: {
     // detail 이벤트.
-    detail(){
-      alert(this.data.studyRoomId)
+    detail() {
+      this.$router.push('/studySpace/' + this.data.studyRoomId);
     }
   }
 }

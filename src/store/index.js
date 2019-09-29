@@ -7,12 +7,9 @@ Vue.use(Vuex);
 const host = `http://localhost:9000`;
 const addTokenToAxiosHeader = () => {
   const {userAccessToken} = localStorage;
-
   if(!userAccessToken) return;
-  // axios.defaults.headers.common['Authorization'] = `Bearer ${userAccessToken}`;
-  return `Bearer ${JSON.parse(userAccessToken).token}`;
+  return `${JSON.parse(userAccessToken).token}`;
 }
-
 
 export default new Vuex.Store({
   state: {
@@ -25,22 +22,24 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    LOGIN(state , {data:token}){
+    LOGIN(state , {data:token} ){
       state.userAccessToken = token;
       state.isLogin = !!token;
       localStorage.setItem("userAccessToken" , JSON.stringify(token));
+      localStorage.setItem("loginUserId", token.userId);
     },
 
     LOGOUT(state) {
       state.userAccessToken = undefined;
       state.isLogin = !!undefined;
-      localStorage.userAccessToken;
+      localStorage.removeItem("userAccessToken");
+      localStorage.removeItem("loginUserId");
     }
   },
   actions: {
-    async LOGIN ({commit}, {userId, userPw : userPwd}) {
+    async LOGIN ({commit}, {userId : userId, userPw : userPwd}) {
       let result = await axios.post(`${host}/user/signin`, {userId, userPwd });
-      commit('LOGIN' , result);
+      commit('LOGIN', result);
       return result
     },
 
@@ -76,6 +75,58 @@ export default new Vuex.Store({
           'Authorization' : tokenHeader
         }});
       return result;
+    },
+
+    async DETAIL_STUDY_SPACE ({commit}  , {studySpaceId} ){
+      let tokenHeader = addTokenToAxiosHeader();
+      let result = await axios.get(`${host}/studySpace/`+studySpaceId,  {
+        headers : {
+          'Content-type' : 'application/json',
+          'Authorization' : tokenHeader
+        }});
+      return result;
+    },
+
+    async REQUEST_STUDY_SPACE ({commit}  , {studySpaceId} ){
+      let tokenHeader = addTokenToAxiosHeader();
+      let result = await axios.put(`${host}/studySpace/participation/`+studySpaceId,  {},{
+        headers : {
+          'Content-type' : 'application/json',
+          'Authorization' : tokenHeader
+        }});
+      return result;
+    },
+
+    async REQUEST_CANCLE_STUDY_SPACE ({commit}  , {studySpaceId} ){
+      let tokenHeader = addTokenToAxiosHeader();
+      let result = await axios.delete(`${host}/studySpace/participation/`+studySpaceId,  {
+        headers : {
+          'Content-type' : 'application/json',
+          'Authorization' : tokenHeader
+        }});
+      return result;
+    },
+
+    async REQUEST_APPROVE_STUDY_SPACE ({commit}  , {studySpaceId, attendantNm}  ){
+      console.log(attendantNm)
+      let tokenHeader = addTokenToAxiosHeader();
+      let result = await axios.put(`${host}/studySpace/approve/`+studySpaceId+'/'+attendantNm,  {},{
+        headers : {
+          'Content-type' : 'application/json',
+          'Authorization' : tokenHeader
+        }});
+      return result;
+    },
+
+    async REQUEST_APPROVE_CANCLE_STUDY_SPACE ({commit}  , {studySpaceId, attendantNm} ){
+      let tokenHeader = addTokenToAxiosHeader();
+      let result = await axios.delete(`${host}/studySpace/approve/`+studySpaceId+'/'+attendantNm,  {
+        headers : {
+          'Content-type' : 'application/json',
+          'Authorization' : tokenHeader
+        }});
+      return result;
     }
+
   }
 })
