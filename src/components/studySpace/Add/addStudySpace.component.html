@@ -6,6 +6,17 @@
                 <p>스터디 추가</p>
             </div>
         </div>
+        <div id="selectBox">
+            <select v-model="selectedGrandParent">
+                <option v-for="grandParent in getGrandParent" :value="grandParent.id">{{ grandParent.label }}</option>
+            </select>
+            <select v-model="selectedParent">
+                <option v-for="parent in getParent" :value="parent.id">{{ parent.label }}</option>
+            </select>
+            <select v-model="selectedChild">
+                <option v-for="child in getChild" :value="child.id">{{ child.label }}</option>
+            </select>
+        </div>
         <div class="study-space-contents">
             <form class="study-space-form" @submit.prevent="onSubmit">
                 <div class="study-space-input-wrap percent-8">
