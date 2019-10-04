@@ -8,7 +8,7 @@
         </div>
         <div id="selectBox">
             <select v-model="selectedGrandParent">
-                <option v-for="grandParent in getGrandParent" :value="grandParent.id">{{ grandParent.label }}</option>
+                <option v-for="grandParent in grandParent" :value="grandParent.id">{{ grandParent.label }}</option>
             </select>
             <select v-model="selectedParent">
                 <option v-for="parent in getParent" :value="parent.id">{{ parent.label }}</option>
