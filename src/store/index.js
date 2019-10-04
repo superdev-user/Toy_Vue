@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+import state from './state'
+import * as getters from './getters'
 
 Vue.use(Vuex);
 
@@ -12,15 +14,8 @@ const addTokenToAxiosHeader = () => {
 }
 
 export default new Vuex.Store({
-  state: {
-    userAccessToken : undefined,
-    isLogin : !!localStorage.userAccessToken
-  },
-  getters: {
-    getUserAccessToken : () => {
-      return localStorage.userAccessToken
-    }
-  },
+  state,
+  getters,
   mutations: {
     LOGIN(state , {data:token} ){
       state.userAccessToken = token;
