@@ -1,5 +1,23 @@
-<div class="listStudySpace">
-
+<div class="listStudySpace" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+    <div id="categoryList">
+        <div v-for="grandParent in grandParents" class="grand-parent-container" >
+            <vs-collapse>
+                <vs-collapse-item>
+                    <div slot="header">{{grandParent.label}}</div>
+                    <div v-for="parent in getParent(grandParent.id)" class="parent-container">
+                        <vs-collapse>
+                            <vs-collapse-item>
+                                <div slot="header">{{parent.label}}</div>
+                                <div v-for="child in getChild(parent.id)" class="child-container">
+                                    <div slot="header">{{child.label}}</div>
+                                </div>
+                            </vs-collapse-item>
+                        </vs-collapse>
+                    </div>
+                </vs-collapse-item>
+            </vs-collapse>
+        </div>
+    </div>
     <div
     is="list-item"
     v-for="v in itemList"

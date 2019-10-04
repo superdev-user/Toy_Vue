@@ -1,3 +1,20 @@
 .listStudySpace {
   position: relative;
+  display: flex;
+
+  #categoryList {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 240px;
+    height: fit-content;
+    background-color: grey;
+    .grand-parent-container {
+      .parent-container {
+        margin-left: 20px;
+        .child-container {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
 }
