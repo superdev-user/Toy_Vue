@@ -14,9 +14,9 @@ export default {
     return {
       title : '',
       description : '',
-      selectedGrandParent: -1,
-      selectedParent: -1,
-      selectedChild: -1,
+      selectedGrandParent: '',
+      selectedParent: '',
+      selectedChild: '',
     }
   },
   computed: {
@@ -25,7 +25,7 @@ export default {
       return returnVal
     },
     getChild() {
-      let returnVal = this.child.filter(item => item.parent_id == this.selectedGrandParent)
+      let returnVal = this.child.filter(item => item.parent_id == this.selectedParent)
       return returnVal
     },
     ...mapGetters({
@@ -35,22 +35,6 @@ export default {
     })
   },
   methods: {
-    loadData:function() {
-      this.items = [];
-      let key = 'name';
-      if(this.selectedOption === 'films') key = 'title';
-
-      fetch('https://swapi.co/api/'+this.selectedOption)
-          .then(res=>res.json())
-          .then(res => {
-            // "fix" the data to set a label for all types
-            this.items = res.results.map((item) =>{
-              item.label = item[key];
-              return item;
-            });
-
-          });
-    },
     onSubmit(e) {
       e.preventDefault();
       let {userId: writer} = JSON.parse(localStorage.userAccessToken);
@@ -59,11 +43,18 @@ export default {
       let descriptionCheck = Validator.isSet(this.description);
       let writerCheck = Validator.isSet(this.writer);
 
+      let categoryCheck= Validator.isSet(this.selectedGrandParent);
+
       if(writerCheck){
         // 작성자가 없거나 비었다는
-      }else if(titleCheck && descriptionCheck){
+      } else if(titleCheck && descriptionCheck && categoryCheck){
         this.$store.dispatch("ADD_STUDY_SPACE" , {
-          title : this.title , description : this.description , masterId : writer
+          title : this.title ,
+          description : this.description ,
+          masterId : writer,
+          category1:  this.selectedGrandParent,
+          category2: this.selectedParent,
+          category3: this.selectedChild,
         }).then(({data:{code} })=> {
 
           if (code === 20000){

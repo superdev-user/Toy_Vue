@@ -52,9 +52,9 @@ export default new Vuex.Store({
       return result;
     },
 
-    async ADD_STUDY_SPACE ({commit} , {title , description , masterId}){
+    async ADD_STUDY_SPACE ({commit} , {title , description , masterId, category1, category2, category3}){
         let tokenHeader = addTokenToAxiosHeader();
-        let result = await axios.post(`${host}/studySpace`,{ title , description ,masterId} ,  {
+        let result = await axios.post(`${host}/studySpace`,{ title , description ,masterId, category1, category2, category3} ,  {
           headers : {
             'Content-type' : 'application/json',
             'Authorization' : tokenHeader
