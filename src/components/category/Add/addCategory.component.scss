@@ -1,0 +1,20 @@
+.category {
+  position: relative;
+  display: flex;
+
+  .category-main {
+    margin-top: 10px;
+    margin-left: 10px;
+    height: fit-content;
+    display: flex;
+    & div {
+      margin-right: 10px;
+    }
+    div > div:first-child {
+      border: solid 1px lightgray;
+      width: 150px;
+      padding: 10px;
+    }
+    li {list-style-type: none;}
+  }
+}

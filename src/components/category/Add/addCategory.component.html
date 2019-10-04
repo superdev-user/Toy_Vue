@@ -1,0 +1,44 @@
+<div class="category" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <div class="category-main">
+        <div>
+            <div>
+                <ul id="grandParent">
+                    <li v-for="category1 in getCategory1List" v-on:click="setCategory1" :id="category1.id" :value="category1.parent_id">
+                        {{ category1.label }}
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <input v-model="category1">
+                <button class="success" v-on:click="newCategory1">신규</button>
+            </div>
+        </div>
+        <div>
+            <div>
+                <ul id="parent">
+                    <li v-for="category2 in getCategory2" v-on:click="setCategory2" :id="category2.id" :value="category2.parent_id">
+                        {{ category2.label }}
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <input v-model="category2">
+                <button class="success" v-on:click="newCategory2">신규</button>
+            </div>
+        </div>
+        <div>
+            <div>
+                <ul id="children">
+                    <li v-for="category3 in getCategory3" v-on:click="setCategory3" :id="category3.id" :value="category3.parent_id">
+                        {{ category3.label }}
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <input v-model="category3">
+                <button class="success" v-on:click="newCategory3">신규</button>
+            </div>
+        </div>
+    </div>
+</div>
+

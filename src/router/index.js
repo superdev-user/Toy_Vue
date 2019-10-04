@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import mains from './main'
 import members from './member'
 import studySpace from './studySpace'
+import category from './category'
 
 const routers = []
 const routerExcute = (router) => {
@@ -14,6 +15,7 @@ const routerExcute = (router) => {
 routerExcute(mains);
 routerExcute(members);
 routerExcute(studySpace);
+routerExcute(category);
 
 Vue.use(Router);
 

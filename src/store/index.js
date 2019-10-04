@@ -29,7 +29,38 @@ export default new Vuex.Store({
       state.isLogin = !!undefined;
       localStorage.removeItem("userAccessToken");
       localStorage.removeItem("loginUserId");
-    }
+    },
+
+    setAddNewCategory1Mutation(state, param) {
+      const item = {}
+      const id = state.category1.length + 1
+      item.id = id
+      item.parent_id = ''
+      item.label = param.label
+
+      state.category1.push(item)
+    },
+    setAddNewCategory2Mutation(state, param) {
+      const item = {}
+      const id = state.category2.length + 1
+      item.id = id.toString()
+      item.parent_id = param.parent_id
+      item.label = param.label
+
+      console.log(item)
+      state.category2.push(item)
+      console.log(state.category2)
+
+    },
+    setAddNewCategory3Mutation(state, param) {
+      const item = {}
+      const id = state.category3.length + 1
+      item.id = id
+      item.parent_id = param.parent_id
+      item.label = param.label
+
+      state.category3.push(item)
+    },
   },
   actions: {
     async LOGIN ({commit}, {userId : userId, userPw : userPwd}) {
@@ -121,7 +152,26 @@ export default new Vuex.Store({
           'Authorization' : tokenHeader
         }});
       return result;
-    }
-
+    },
+    addNewCategory1({ commit }, label) {
+      const param = {
+        label: label,
+      }
+      commit('setAddNewCategory1Mutation', param)
+    },
+    addNewCategory2({ commit }, {parent_id, label}) {
+      const param = {
+        parent_id: parent_id,
+        label: label,
+      }
+      commit('setAddNewCategory2Mutation', param)
+    },
+    addNewCategory3({ commit }, {parent_id, label}) {
+      const param = {
+        parent_id: parent_id,
+        label: label,
+      }
+      commit('setAddNewCategory3Mutation', param)
+    },
   }
 })
