@@ -70,7 +70,7 @@ export default {
     newCategory3() {
       this.$store.dispatch('addNewCategory3', {
         parent_id: this.selectedCategory2,
-        categoryName: this.category3,
+        label: this.category3,
       })
     },
   },
