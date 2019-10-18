@@ -183,5 +183,15 @@ export default new Vuex.Store({
           }});
       return result;
     },
+
+    async DELETE_STUDY_SPACE ({commit}  , {studySpaceId}  ){
+      let tokenHeader = addTokenToAxiosHeader();
+      let result = await axios.delete(`${host}/studySpace/`+studySpaceId ,{
+        headers : {
+          'Content-type' : 'application/json',
+          'Authorization' : tokenHeader
+        }});
+      return result;
+    },
   }
 })

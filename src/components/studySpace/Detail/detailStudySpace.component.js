@@ -121,7 +121,22 @@ export default {
 
       this.$router.push({ name: 'editStudySpace', params : studySpaceInfo });
     },
+    deleteStudySpace(e) {
+      e.preventDefault()
 
+      this.$store.dispatch("DELETE_STUDY_SPACE" , {
+        studySpaceId: this.$route.params.studyRoomId
+      }).then(({status})=> {
+        if (status == 200) {
+          alert("스터디가 삭제되었습니다.");
+          this.$router.push('/studySpaceList');
+        }
+
+      }).catch(err => {
+        console.log(err)
+      })
+
+    },
 
 
   }
