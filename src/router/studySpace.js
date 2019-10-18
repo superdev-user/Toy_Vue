@@ -1,6 +1,7 @@
 import AddStudySpace from '@/components/studySpace/Add';
 import ListStudySpace from '@/components/studySpace/List';
 import DetailStudySpace from '@/components/studySpace/Detail';
+import EditStudySpace from '@/components/studySpace/Edit';
 
 export default [
   {
@@ -18,5 +19,10 @@ export default [
     name: 'detailStudySpace',
     component: DetailStudySpace,
   },
+  {
+    path: '/studySpace/edit/:studyRoomId',
+    name: 'editStudySpace',
+    component: EditStudySpace,
+  }
 
 ]

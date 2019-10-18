@@ -1,0 +1,38 @@
+<div class=".study-space">
+    <div class="study-space-main">
+        <div class="study-space-contents-img">
+            <img src="@/assets/images/study-main.png">
+            <div class="text" >
+                <p>스터디 수정</p>
+            </div>
+        </div>
+        <div id="selectBox">
+            <select v-model="selectedGrandParent">
+                <option v-for="grandParent in grandParent" :value="grandParent.id">{{ grandParent.label }}</option>
+            </select>
+            <select v-model="selectedParent">
+                <option v-for="parent in getParent" :value="parent.id">{{ parent.label }}</option>
+            </select>
+            <select v-model="selectedChild">
+                <option v-for="child in getChild" :value="child.id">{{ child.label }}</option>
+            </select>
+        </div>
+        <div class="study-space-contents">
+            <form class="study-space-form" @submit.prevent="onSubmit">
+                <div class="study-space-input-wrap percent-8">
+                    제목 <input class="study-space-input" v-model="title" type="text"/>
+                </div>
+<!--                <div class="study-space-input-wrap percent-8">-->
+<!--                    모임장 <input class="study-space-input" v-model="masterId" type="text"/>-->
+<!--                </div>-->
+                <div class="study-space-input-wrap percent-78">
+                    소개 <textarea class="study-space-textarea" v-model="description" type="text"/>
+                </div>
+
+<!--                <div v-if="masterId == loginUserId">-->
+                    <button class="success">저장</button>
+<!--                </div>-->
+            </form>
+        </div>
+    </div>
+</div>

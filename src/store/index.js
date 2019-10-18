@@ -173,5 +173,15 @@ export default new Vuex.Store({
       }
       commit('setAddNewCategory3Mutation', param)
     },
+
+    async EDIT_STUDY_SPACE ({commit} , {title, description, studySpaceId, category1, category2, category3}){
+        let tokenHeader = addTokenToAxiosHeader();
+        let result = await axios.put(`${host}/studySpace/`+studySpaceId,{ title , description ,category1, category2, category3} ,  {
+          headers : {
+            'Content-type' : 'application/json',
+            'Authorization' : tokenHeader
+          }});
+      return result;
+    },
   }
 })

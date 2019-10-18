@@ -38,6 +38,9 @@
                 <div v-if="masterId !== loginUserId">
                     <button @click="studyRequest" class="success">가입요청</button>
                 </div>
+                <div v-if="masterId == loginUserId">
+                    <button @click="moveEditPage" class="success">수정</button>
+                </div>
 
             </form>
         </div>

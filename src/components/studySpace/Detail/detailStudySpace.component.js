@@ -11,6 +11,9 @@ export default {
     return {
       title : '',
       description : '',
+      category1 : '',
+      category2 : '',
+      category3 : '',
       masterId : '',
       requests : '',
       loginUserId : localStorage.loginUserId
@@ -29,6 +32,9 @@ export default {
         if (code === 20000) {
           this.title = data.title;
           this.description = data.description;
+          this.category1 = data.category1;
+          this.category2 = data.category2;
+          this.category3 = data.category3;
           this.masterId = data.masterId;
           this.requests = data.requests;
         }
@@ -101,7 +107,20 @@ export default {
         console.log(err)
       })
 
-    }
+    },
+    moveEditPage(e) {
+      e.preventDefault()
+
+      //기존 게시물 정보 객체 세팅
+      var studySpaceInfo = {};
+      studySpaceInfo.title = this.$data.title;
+      studySpaceInfo.description = this.$data.description;
+      studySpaceInfo.category1 = this.$data.category1;
+      studySpaceInfo.category2 = this.$data.category2;
+      studySpaceInfo.category3 = this.$data.category3;
+
+      this.$router.push({ name: 'editStudySpace', params : studySpaceInfo });
+    },
 
 
 
